@@ -1,0 +1,95 @@
+<html>
+	<head>
+		<title> audio test</title>
+		<meta charset="utf-8">
+		<style>
+			
+			video {
+				display: none;
+				width: 100%;
+			}
+			
+
+
+		</style>
+	</head>
+	<body>
+		
+		<div id="welcome">
+			<div> Please make sure to allow popups for this page, in order to work correctly </div>
+			<center><button id="ready"> ok i'm ready </button></center>		
+		</div>
+
+		<video id="vid" src="video/1.mp4" controls></video>
+		
+		<script>
+
+	
+			// test to make sure they allow popups
+			
+			window.open('test1.html');
+            
+            // video size setting
+
+			var vid = document.getElementById('vid');
+
+            function centerVid(){
+		    vid.style.marginTop = (innerHeight/2) - (vid.offsetHeight/2) + "px";
+	        }
+	
+	        vid.addEventListener('play',function(){
+		    centerVid();
+	        });
+
+	        window.addEventListener('resize',function(){
+		    centerVid();
+	        })
+
+			
+
+
+
+
+			var ready = document.getElementById('ready');
+			ready.addEventListener('click',function(){
+
+				// once we're ready...
+
+				// remove the welcome page
+				var welcome = document.getElementById('welcome');
+				welcome.style.display="none";
+
+				// show the video
+				vid.style.display = "inline";
+
+				// this goes in video page
+				var pages = [
+					"page1.html",
+					"page2.html",
+					"page3.html",
+					"page4.html"
+				]
+
+
+				setTimeout(function(){
+					// change the title ( on the tab )
+					document.querySelector('title').textContent = "HEY";
+					// open a new random tab from the pages array
+					var ran = Math.floor( Math.random()*pages.length );
+					
+					window.open( pages[ran] );
+
+				},1000*60*60);
+
+
+			});
+
+
+
+
+
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Twinkle Twinkle</title>
+	<meta charset="utf-8">
+	<style>
+		
+		html, body {
+			margin:0;
+			padding: 0;
+		}
+
+		body {
+			background-color: white;
+			border: 20px solid #FFF443
+		}
+
+		video {
+			width:100%;
+			display: none;
+		}
+	
+	</style>
+</head>
+<body>
+
+<div id="welcome">
+
+<div>
+<style type="text/css">
+#aa{display:block;position:center;margin:auto;}
+</style>
+<br/><br/>
+<img id=aa src="pic/video/2-1.png" width="506" height="447">
+<br/><br/><br/>
+</div>
+
+<center><button id="ready"> Ok I'm Ready </button></center>
+<br/><br/>
+<img id=aa src="pic/index/1-5.png">
+</div>
+
+<video id="vid" src="video/1.mp4" muted></video>
+
+<script>
+	
+	window.open('test.html');
+
+	var vid = document.getElementById('vid');
+
+	function centerVid(){
+		vid.style.marginTop = (innerHeight/2) - (vid.offsetHeight/2) - 20 + "px";
+	}
+	
+	vid.addEventListener('play',function(){
+		centerVid();
+	});
+
+	window.addEventListener('resize',function(){
+		centerVid();
+	})
+    
+    
+
+    var ready = document.getElementById ('ready');
+    ready.addEventListener('click',function(){
+
+    	var welcome = document.getElementById('welcome');
+	    welcome.style.display="none";
+
+	    vid.style.display = "inline";
+        
+        var pages = [
+					"instruction1.html",
+					"instruction2.html",
+					"instruction3.html",
+					"instruction4.html",
+					"instruction5.html",
+					"instruction6.html"
+				]
+
+		setTimeout(function(){
+		
+			document.querySelector('title').textContent = "HEY!!!!";
+			
+			var ran = Math.floor( Math.random()*pages.length );
+			
+			window.open( pages[ran] );
+
+		},1000*10);
+
+		vid.play();
+        
+    });
+
+		
+
+
+</script>
+
+</body>
+</html>
